@@ -14,11 +14,38 @@ loop:
     BL printf
     B loop
 
+
+sum:
+    MOV R3, #0         @ Stores sum
+    LDR R2, [R0, #0]   @ num1
+    ADD R3, R3, R2
+    LDR R2, [R0, #4]   @ num2
+    ADD R3, R3, R2
+    LDR R2, [R0, #8]   @ num3
+    ADD R3, R3, R2
+    LDR R2, [R0, #12]  @ num4
+    ADD R3, R3, R2
+    LDR R2, [R0, #16]  @ num5
+    ADD R3, R3, R2
+    LDR R2, [R0, #20]  @ num6
+    ADD R3, R3, R2
+    LDR R2, [R0, #24]  @ num7
+    ADD R3, R3, R2
+    LDR R2, [R0, #28]  @ num8
+    ADD R3, R3, R2
+
+    MOV R0, R3         @ Move the sum into R0
+    BX lr
+
 average:
-
-
+    PUSH {lr}
+    BL sum
+    LSR R0, #3         @ Divide by 8
+    POP {pc}
+    BX lr
 
 .data
     .align 4
-    message_str: .asciz "Average value %d\n"
     my_array: .word 10, 20, 30, 40, 50, 60, 70, 80
+    message_str: .asciz "Average value %d\n"
+   
