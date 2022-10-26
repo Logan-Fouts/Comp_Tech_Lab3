@@ -1,6 +1,6 @@
     .EQU LED_PIN1, 0
     .EQU BUTTON1, 1
-    .EQU BUTTON2, 3
+    .EQU BUTTON2, 2
     .EQU GPIO_IN, 0
     .EQU GPIO_OUT, 1
 
